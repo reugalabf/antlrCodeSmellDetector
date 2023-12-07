@@ -3,6 +3,7 @@
 Se muestran los resultados de los test de cada class test.
 En cada objeto .json se representa en primer lugar la query, y en segundo lugar un valor boolean (true/false), si es true significa que se debe detectar el badsmell, caso contrario false.
 
+Estos test se realizaron con el `@RunWith(Parameterized.class)` para poder en una ejecución probar distintas queries.
 
 # DetectSubqueriesInSelectTest
 

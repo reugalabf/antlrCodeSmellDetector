@@ -1,10 +1,9 @@
 
 # Transformaciones de consultas SQL
 
-
 ## Introducción
 
-_Este informe documenta el desarrollo de una herramienta para detectar "bad smells" en consultas SQL utilizando ANTLR y Java. El objetivo es identificar prácticas ineficientes o problemáticas en el código SQL para optimizar el rendimiento y la mantenibilidad de las bases de datos.
+_Este informe documenta el desarrollo de una herramienta para detectar "bad smells" en consultas SQL utilizando ANTLR y Java con Eclipse. El objetivo es identificar prácticas ineficientes o problemáticas en el código SQL para optimizar el rendimiento y la mantenibilidad de las bases de datos.
 Este trabajo se desarrolla para la materia Orientación a Objetos II (UNLP)._
 
 *Ezequiel Carletti*
@@ -44,7 +43,7 @@ Este trabajo se desarrolla para la materia Orientación a Objetos II (UNLP)._
     2. [Aprendizaje de SQL](#aprendizaje-de-sql)
  8. [Referencias](#referencias)
 
-# [Link test en Eclipse](test-eclipse.md)
+## [[RESULTADOS] Link test en Eclipse](test-eclipse.md)
 
 ## Herramientas y Tecnologías Utilizadas
 
@@ -498,13 +497,14 @@ SELECT u.name FROM users u;
 
 ## Conclusiones
 
-El desarrollo de este proyecto de detección de bad smells en consultas SQL ha sido una exploración valiosa en la intersección del análisis estático de código y las mejores prácticas de bases de datos. A través de la implementación de una serie de detectores de patrones de consulta ineficientes,  pudiendo identificar y resaltar áreas críticas donde las consultas SQL podrían mejorarse para una mayor eficiencia y rendimiento.
+El desarrollo de este proyecto de detección de bad smells en consultas SQL fue una exploración valiosa en la intersección del análisis estático de código y las mejores prácticas de bases de datos. A través de la implementación de una serie de detectores de patrones de consulta ineficientes,  pudiendo identificar y resaltar áreas críticas donde las consultas SQL podrían mejorarse para una mayor eficiencia y rendimiento.
 
 ### Resultados Clave
 
 - La utilización de `ANTLR4` y una gramática específica para SQLite ha demostrado ser efectiva para el análisis y la manipulación del AST (Abstract Syntax Tree) generado de las consultas SQL.
 - La creación de clases especializadas como `ExpressionSmellDetector` y `SQLSmellDetectorVisitor` ha permitido modularizar la lógica de detección y mantener el código organizado y mantenible.
 - Las pruebas unitarias desempeñan un papel crucial en la validación de la lógica de detección de bad smells. Cada detector fue probado con una variedad de consultas SQL, permitiendo que los bad smells fueran identificados.
+- Patrón Visitor
 
 
 
@@ -514,14 +514,14 @@ A lo largo del proyecto, se enfretaron varios desafíos que  ofrecieron valiosos
 
 #### Aprendizaje del Patrón Visitor
 
-- Uno de los aprendizajes más significativos fue la comprensión y aplicación del patrón de diseño Visitor. Este patrón nos permitió realizar operaciones sobre los elementos de un objeto estructura sin cambiar las clases de los elementos sobre los que opera.
+- Ademas otro aprendizaje importante fue la comprensión y aplicación del patrón de diseño Visitor. Este patrón permitió realizar operaciones sobre los elementos de un objeto estructura sin cambiar las clases de los elementos sobre los que opera.
 - En términos sencillos, el patrón Visitor  permitió "visitar" los nodos del AST generado por el análisis de SQL y aplicar operaciones específicas, como la detección de bad smells, sin necesidad de modificar la estructura o las clases de los nodos.
 - La habilidad para agregar nuevas operaciones a estas estructuras sin modificarlas es una ventaja clave del patrón Visitor, lo que resultó una gran practica para mantener el código modular.
 
 #### Aprendizaje de SQL
 
 - A través del proyecto, se amplio el conocimiento de SQL, especialmente en lo que respecta a patrones de consultas eficientes versus ineficientes.
-- Profundizamos en el entendimiento de cómo ciertas prácticas, aunque válidas sintácticamente, pueden llevar a un rendimiento subóptimo en bases de datos reales.
+- Se profundizó en el entendimiento de cómo ciertas prácticas, aunque válidas sintácticamente, pueden llevar a un rendimiento subóptimo en bases de datos reales.
 - Este conocimiento no solo se aplicó en la detección de bad smells sino también en la creación de casos de prueba y en la validación de los resultados de nuestra herramienta.
 
 
@@ -535,4 +535,6 @@ A lo largo del proyecto, se enfretaron varios desafíos que  ofrecieron valiosos
 -  [7 Bad Practices to Avoid When Writing SQL Queries for Better Performance](https://dev.to/abdelrahmanallam/7-bad-practices-to-avoid-when-writing-sql-queries-for-better-performance-c87)
 - [The Definitive ANTLR 4 Reference](https://pragprog.com/titles/tpantlr2/the-definitive-antlr-4-reference/)
 - [SQL Code Smells / Red-gate](https://www.red-gate.com/simple-talk/databases/sql-server/t-sql-programming-sql-server/sql-code-smells/)
+- [Lab ANTLR](http://lab.antlr.org/)
+- [Design Patterns / Libro](https://profeuttec.yolasite.com/resources/Patrones%20de%20dise%C3%B1o%20-%20Erich%20Gamma.pdf)
 

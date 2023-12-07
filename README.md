@@ -55,7 +55,7 @@ Este trabajo se desarrolla para la materia Orientación a Objetos II (UNLP)._
 
 ### Instalación y Configuración
 
-Para llevar a cabo este proyecto, se utilizó el entorno de desarrollo Eclipse, que ofreció un soporte robusto y herramientas necesarias para la implementación y prueba del proyecto. A continuación se detallan los pasos para la instalación y configuración del entorno:
+Para llevar a cabo este proyecto, se utilizó el entorno de desarrollo Eclipse, que ofrece un soporte y herramientas necesarias para la implementación y prueba del proyecto. A continuación se detallan los pasos para la instalación y configuración del entorno:
 
 #### Instalación de Eclipse
 
@@ -63,17 +63,17 @@ Para llevar a cabo este proyecto, se utilizó el entorno de desarrollo Eclipse, 
 
 #### Configuración de Eclipse para ANTLR y JUnit
 
-Para configurar Eclipse con las herramientas necesarias para nuestro proyecto, se siguieron los siguientes pasos:
+Para configurar Eclipse con las herramientas necesarias para el proyecto, se siguieron los siguientes pasos:
 
 1. **Instalación de ANTLR 4 IDE 0.3.6:**
    - En Eclipse, se accede al `Eclipse Marketplace` desde el menú `Help`.
    - Se busca `ANTLR 4 IDE` y se selecciona la versión `0.3.6`.
-   - Se sigue el proceso de instalación, aceptando los términos y reiniciando Eclipse si es necesario.
+   - Se sigue el proceso de instalación, aceptando los términos y reiniciando Eclipse.
 
 2. **Instalación de JUnit-Tools 1.1.0:**
    - Siguiendo un proceso similar, se accede al `Eclipse Marketplace`.
    - Se busca `JUnit-Tools` y se selecciona la versión `1.1.0`.
-   - Se completa la instalación y se reinicia Eclipse si es necesario.
+   - Se completa la instalación y se reinicia Eclipse.
 
 #### Configuración del Proyecto
 
@@ -91,7 +91,7 @@ Una vez instaladas estas herramientas, se procede a la configuración del proyec
 
 ## Estructura del Proyecto
 
-El proyecto `antlrCodeSmellDetector` está diseñado para identificar y reportar "bad smells" en consultas SQL, utilizando una gramática SQLite definida por ANTLR 4. El proyecto se estructura en torno a la generación automática de clases de análisis de código y una serie de clases de detección y pruebas diseñadas específicamente para la detección de malas prácticas en SQL.
+El proyecto `antlrCodeSmellDetector` está diseñado para identificar y reportar "bad smells" en consultas SQL, utilizando una gramática SQLite definida por ANTLR 4. El proyecto se estructura en torno a la generación automática de clases de análisis de código y una serie de clases de detección y pruebas diseñadas para la detección de malas prácticas en SQL.
 
 ### Módulos y Clases Principales
 
@@ -147,7 +147,8 @@ Para utilizar el detector de bad smells, se debe proporcionar una consulta SQL a
 
 ## Detección de Bad Smells
 
-La detección de "bad smells" en consultas SQL es una parte crucial del mantenimiento y optimización de bases de datos. Estos "bad smells" son prácticas que, aunque no incorrectas sintácticamente, pueden llevar a un rendimiento subóptimo o a una mala legibilidad del código. A continuación, se detallan los "bad smells" detectados en el proyecto `antlrCodeSmellDetector`.
+La detección de "bad smells" en consultas SQL es una tarea importante en el mantenimiento y optimización de bases de datos. Estos "bad smells" son prácticas que, aunque no sean incorrectas desde el punto de vista sintáctico, pueden llevar a un rendimiento subóptimo o a una mala legibilidad del código. 
+En el proyecto antlrCodeSmellDetector, se emplea el **patrón Visitor**, un patrón de diseño utilizado en la programación orientada a objetos, para navegar y realizar operaciones en una estructura de objetos sin necesidad de conocer sus clases concretas. Esto es particularmente útil en el análisis de árboles sintácticos, como los generados por ANTLR para consultas SQL, permitiendo una implementación flexible y extensible para la detección de malas prácticas. A continuación, se detallan los "bad smells" detectados en el proyecto `antlrCodeSmellDetector``.
 
 ### 1 - Subconsultas en SELECT
 
@@ -169,7 +170,7 @@ La detección de "bad smells" en consultas SQL es una parte crucial del mantenim
 **Detección:**
 
 -   **Con JOINs:** Se detecta cuando la cláusula `DISTINCT` se utiliza en consultas que incluyen JOINs. La presencia simultánea de `DISTINCT` y JOINs en `Select_coreContext` se informa como potencialmente problemática y se marca en la variable `detectedDistinct`.
--   **Sin JOINs:** Se detecta el uso de `DISTINCT` en consultas sin JOINs. Aunque no es necesariamente un "bad smell" en todos los contextos, puede ser un indicador de que la consulta y/o el diseño de la base de datos podrían optimizarse. La detección se enfoca en identificar usos de `DISTINCT` que podrían ser innecesarios o indicativos de problemas subyacentes en la estructura de datos.
+-   **Sin JOINs:** Se detecta el uso de `DISTINCT` en consultas sin JOINs. Aunque no es necesariamente un "bad smell" en todos los contextos, puede ser un indicador de que la consulta podría optimizarse. La detección se enfoca en identificar usos de `DISTINCT` que podrían ser innecesarios o indicativos de problemas subyacentes en la estructura de datos.
 
 ### 4 - Uso de OR
 
@@ -191,11 +192,11 @@ La detección de "bad smells" en consultas SQL es una parte crucial del mantenim
 ### 7 -  SELECT *
 
 **Impacto:** Utilizar `SELECT *` puede reducir la eficiencia al recuperar más datos de los necesarios. Afecta el rendimiento y puede incluir cambios inesperados si la estructura de la tabla cambia. 
-**Detección:** Se identifica cuando el `Result_columnContext` es igual a `*`. La clase `SQLSmellDetectorVisitor` marca esto como una práctica desaconsejada y actualiza la variable `detectedSelectStar`.
+**Detección:** Se identifica cuando el `Result_columnContext` es igual a `*`. La clase `SQLSmellDetectorVisitor` marca esto como una práctica desaconsejada.
 
 ## Pruebas Unitarias
 
-Las pruebas unitarias son fundamentales en cualquier proyecto de desarrollo de software, ya que permiten verificar que cada unidad de código funcione correctamente de forma aislada. En el caso del proyecto `antlrCodeSmellDetector`, se implementan pruebas unitarias para cada "bad smell" detectable, incluyendo la detección de subconsultas en la cláusula SELECT de las consultas SQL.
+Las pruebas unitarias son fundamentales en cualquier proyecto de desarrollo de software, ya que permiten verificar que cada unidad de código funcione correctamente de forma aislada. En el caso del proyecto `antlrCodeSmellDetector`, se implementan pruebas unitarias para algunos "bad smell" detectable.
 
 ## Pruebas Unitarias para detectar Subconsultas 
 

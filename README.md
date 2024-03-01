@@ -3,10 +3,8 @@
 
 ## Introducción
 
-_Este informe documenta el desarrollo de una herramienta para detectar "bad smells" en consultas SQL utilizando ANTLR y Java con Eclipse. El objetivo es identificar prácticas ineficientes o problemáticas en el código SQL para optimizar el rendimiento y la mantenibilidad de las bases de datos.
-Este trabajo se desarrolla para la materia Orientación a Objetos II (UNLP)._
 
-*Ezequiel Carletti*
+This repository is a clone of this repository by *Ezequiel Carletti* antlrCodeSmellDetector.git
 
 ## Índice
 
